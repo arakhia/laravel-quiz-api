@@ -31,6 +31,11 @@ class Quiz extends Model
         return $this->hasMany(QuizAnswer::class);
     }
 
+    public function wrong_answers()
+    {
+        return $this->answers()->where('result', '=', False);
+    }
+
     public function vocabularies()
     {
         return $this->belongsToMany(Vocabulary::class, 'quiz_answers');
